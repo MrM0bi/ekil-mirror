@@ -11,6 +11,8 @@ Before beeing able to use this a Spotify User needs to do the following
 3. Create a URL to open in the Browser where the user Authorizes the App to access his account
 4. Then exchange a value returned by the Browser (in the URL) with a permanent "Refresh Token" that is specific for this user (API)
 
+> Spotify API Reference: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+
 
 ### Envoirement Variables
 
