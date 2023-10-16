@@ -195,7 +195,8 @@ def getAllPlaylistItems(access_token, playlist_id, fields):
 
 # Adds a list of Tracks to a specific playlist
 def addTracksToPlaylist(access_token, playlist_id, track_uris):
-    url = f"{APIROOT}/playlists/{playlist_id}/tracks"
+    position = 0
+    url = f"{APIROOT}/playlists/{playlist_id}/tracks?position={position}"
 
     headers = {
         "Authorization": f"Bearer {access_token}"
