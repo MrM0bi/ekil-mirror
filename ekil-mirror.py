@@ -210,7 +210,7 @@ def addTracksToPlaylist(access_token, playlist_id, track_uris):
 
     if not res.ok:
         text = "[ERROR] Unable to add unsynced Tracks to the Likes-Mirror Playlist"
-        print(text)
+        print(f"{text}:\n  {res.text}")
         telegramAlert(text)
         quit(-1)
 
@@ -318,6 +318,9 @@ else:
     # Splitting the Lists into parts of 100
     for i in range(0, len(tracks_to_add), steps):  
         tracks_to_add_split.append(tracks_to_add[i:i+steps])
+
+    # Reverse order of Song-Blocks, otherwise the order is wrong
+    tracks_to_add_split.reverse()
 
     # Adding Tracks to the Playlist in steps
     for track_part in tracks_to_add_split:
