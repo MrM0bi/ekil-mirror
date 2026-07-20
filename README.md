@@ -7,11 +7,25 @@ A script to sync liked tracks on Spotify to a specific Playlist
 Before beeing able to use this a Spotify User needs to do the following
 
 1. Create a "Spotify-App" in the Spotify Developer Dashboard
-2. Get a normal Access Token using the API
-3. Create a URL to open in the Browser where the user Authorizes the App to access his account
-4. Then exchange a value returned by the Browser (in the URL) with a permanent "Refresh Token" that is specific for this user (API)
+2. Run `get-new-refresh-token.py` to get a user-specific Refresh Token
+
+**NOTE**: The Refresh Token is valid for 180 days (6 months) afterwards it has to be refreshed using the same script.
 
 > Spotify API Reference: https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+
+
+### get-new-refresh-token.py
+
+Automates the OAuth Authorization Code flow to obtain a new Refresh Token.
+
+1. Run the script: `./get-new-refresh-token.py`
+2. Enter Client ID and Client Secret (or reuse existing file)
+3. Open the printed URL in a browser, log in, and authorize
+4. Paste the callback URL back into the terminal
+5. Script saves the Refresh Token to `{SF_DATADIR}{SF_REFRESHTOKENFN_MRMOBI}`
+
+Requires `SF_DATADIR` and `SF_REFRESHTOKENFN_MRMOBI` to be set. Reads
+`{SF_DATADIR}{SF_IDSECRETFN}` if available, else prompts for credentials.
 
 
 ### Envoirement Variables

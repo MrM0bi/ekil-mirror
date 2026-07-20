@@ -60,6 +60,12 @@ def refreshAccessToken(idsecret64, refresh_token):
         return access_token
     
     else:
+        
+        text = f"[ERROR] Spotify API returned {res.status_code}: {res.text}"
+        print(text)
+        telegramAlert(text)
+        quit(-1)
+
         return None
 
 
@@ -255,6 +261,12 @@ print("- Checking access... ", end="")
 access = testAccess(current_access_token)
 if not access.ok:
     current_access_token = refreshAccessToken(idsecret64, refresh_token)
+
+    if current_access_token is None:
+        text = "[ERROR] Unable to get new Access-Token"
+        print(text)
+        telegramAlert(text)
+        quit(-1)
 
     try:
         # Overwrite currently saved Access Token with the new one
